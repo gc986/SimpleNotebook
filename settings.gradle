@@ -1,0 +1,4 @@
+rootProject.name='SimpleNotebook'
+include ':app'
+include ':dataproviders'
+include ':models'

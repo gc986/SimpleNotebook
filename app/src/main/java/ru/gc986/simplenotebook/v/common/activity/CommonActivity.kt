@@ -49,7 +49,7 @@ abstract class CommonActivity<T : CommonPres<*>> : AppCompatActivity(), CommonAc
     }
 
     override fun showSnackBar(text: String) {
-        Snackbar.make(this.findViewById(R.id.root), text, Snackbar.LENGTH_LONG)
+        Snackbar.make(this.findViewById(R.id.root), text, Snackbar.LENGTH_LONG).show()
     }
 
 }

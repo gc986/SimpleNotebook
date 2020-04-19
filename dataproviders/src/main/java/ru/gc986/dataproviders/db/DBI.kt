@@ -11,4 +11,6 @@ interface DBI {
 
     fun getAllUsers(): Observable<List<User>>
 
+    fun searchUser(userPattern: String): Observable<List<User>>
+
 }

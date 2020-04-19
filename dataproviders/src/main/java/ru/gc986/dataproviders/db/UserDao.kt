@@ -19,4 +19,7 @@ interface UserDao {
     @Query("SELECT * FROM user")
     fun getAllUsers(): List<User>
 
+    @Query("SELECT * FROM user WHERE name Like :userPattern OR phone Like :userPattern")
+    fun searchUser(userPattern: String): List<User>
+
 }

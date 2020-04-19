@@ -39,4 +39,12 @@ class DB(context: Context) : DBI {
         .subscribeOn(Schedulers.newThread())
         .observeOn(AndroidSchedulers.mainThread())
 
+    override fun searchUser(userPattern: String): Observable<List<User>> = Observable.create <List<User>> {
+            it.onNext(db.getUserDao().searchUser("%$userPattern%"))
+            it.onComplete()
+        }
+        .subscribeOn(Schedulers.newThread())
+        .observeOn(AndroidSchedulers.mainThread())
+
+
 }

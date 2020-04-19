@@ -1,7 +1,6 @@
 package ru.gc986.simplenotebook.p.users
 
 import io.reactivex.Observable
-import ru.gc986.logs.Logs
 import ru.gc986.models.Consts.Companion.ONE_SEC_IN_MILLISECONDS
 import ru.gc986.models.Consts.Companion.SP_PAST_UPDATE_TIME
 import ru.gc986.simplenotebook.SimpleNotebookApp
@@ -17,7 +16,9 @@ class UsersP: CommonPresImpl<UsersVI>(),
             .getSPLong(SP_PAST_UPDATE_TIME)
             .subscribe({
                 if (it < targerTime())
-                    getUsers()
+                    toUpdateUsers()
+                else
+                    showUsers()
             },{
                 getV().showSnackBar(it.message.toString())
             }).addToUnsubscribe()
@@ -25,7 +26,7 @@ class UsersP: CommonPresImpl<UsersVI>(),
 
     private fun targerTime() = System.currentTimeMillis() - ONE_SEC_IN_MILLISECONDS
 
-    private fun getUsers(){
+    override fun toUpdateUsers(){
         dataCenter.setMainServerUrl("https://raw.githubusercontent.com")
 
         val urls = listOf(
@@ -34,24 +35,28 @@ class UsersP: CommonPresImpl<UsersVI>(),
             "https://raw.githubusercontent.com/SkbkonturMobile/mobile-test-droid/master/json/generated-03.json")
 
         getDB().deleteAllUsers()
-            .flatMap { Observable.fromIterable(urls) }
+            .concatMap { Observable.fromIterable(urls) }
             .doOnSubscribe { getV().showProgress() }
-            .flatMap { getNet().getUserList(it) }
-            .flatMap { getDB().insertAllUsers(it) }
+            .concatMap { getNet().getUserList(it) }
+            .concatMap { getDB().insertAllUsers(it) }
             .doFinally { getV().hideProgress() }
             .subscribe({
             },{
                 getV().showSnackBar(it.message.toString())
                 it.printStackTrace()
             },{
-                usersHasBeenUpdated()
+                showUsers()
+                updateTime()
             })
             .addToUnsubscribe()
     }
 
-    private fun usersHasBeenUpdated(){
-        getV().showSnackBar("Users updated")
-        updateTime()
+    private fun showUsers(){
+        getDB().getAllUsers().subscribe({
+            getV().updateUserList(it)
+        },{
+            getV().showSnackBar(it.message.toString())
+        }).addToUnsubscribe()
     }
 
     private fun updateTime(){
@@ -61,8 +66,10 @@ class UsersP: CommonPresImpl<UsersVI>(),
             .addToUnsubscribe()
     }
 
-    override fun toSearchUser(userPattern: String) {
-
+    override fun toSearchUser() {
+        getDB().searchUser(getV().userPattern)
+            .subscribe({getV().updateUserList(it)},{ getV().showSnackBar(it.message.toString()) })
+            .addToUnsubscribe()
     }
 
     override fun resetSearchUser() {

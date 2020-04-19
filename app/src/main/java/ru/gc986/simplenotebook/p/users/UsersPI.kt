@@ -4,7 +4,8 @@ import ru.gc986.simplenotebook.p.common.CommonPres
 
 interface UsersPI: CommonPres<UsersVI> {
 
-    fun toSearchUser(userPattern: String)
+    fun toUpdateUsers()
+    fun toSearchUser()
     fun resetSearchUser()
 
 }

@@ -14,7 +14,7 @@ import javax.net.ssl.X509TrustManager
 
 class BaseNetConstructor(showDebugInfo: Boolean) {
 
-    val TIMEOUT_FOR_REQUESTS = 30L
+    val TIMEOUT_FOR_REQUESTS = 5L
 
     private val tmf: TrustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm())
 

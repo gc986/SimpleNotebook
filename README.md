@@ -1,6 +1,10 @@
 <h1>SimpleNotebook</h1>
 <br>
 <br>
+mvp
+<br>
+SingleActivity app
+<br>
 rxjava2
 <br>
 dagger2

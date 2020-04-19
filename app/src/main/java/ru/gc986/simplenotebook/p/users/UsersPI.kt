@@ -7,5 +7,6 @@ interface UsersPI: CommonPres<UsersVI> {
     fun toUpdateUsers()
     fun toSearchUser()
     fun resetSearchUser()
+    fun showUser()
 
 }

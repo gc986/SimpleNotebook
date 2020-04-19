@@ -4,13 +4,14 @@ import io.reactivex.Observable
 import ru.gc986.models.Consts.Companion.ONE_SEC_IN_MILLISECONDS
 import ru.gc986.models.Consts.Companion.SP_PAST_UPDATE_TIME
 import ru.gc986.simplenotebook.SimpleNotebookApp
+import ru.gc986.simplenotebook.SimpleNotebookApp.Companion.diData
 import ru.gc986.simplenotebook.p.common.CommonPresImpl
 
 class UsersP: CommonPresImpl<UsersVI>(),
     UsersPI {
 
     override fun init() {
-        SimpleNotebookApp.diData.inject(this)
+        diData.inject(this)
 
         getSP()
             .getSPLong(SP_PAST_UPDATE_TIME)
@@ -73,7 +74,11 @@ class UsersP: CommonPresImpl<UsersVI>(),
     }
 
     override fun resetSearchUser() {
+        showUsers()
+    }
 
+    override fun showUser() {
+        getV().showUser(getV().currentUser)
     }
 
 }

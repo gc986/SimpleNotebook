@@ -1,5 +1,6 @@
 package ru.gc986.simplenotebook.v
 
+import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import butterknife.ButterKnife
@@ -22,6 +23,13 @@ class UsersFragment : CommonFragment<UsersPI>(),
     SwipeRefreshLayout.OnRefreshListener {
 
     override var userPattern: String = ""
+    override lateinit var currentUser: User
+
+    companion object {
+        @JvmStatic
+        fun newInstance() =
+            UsersFragment()
+    }
 
     override fun getLayoutId(): Int = R.layout.fragment_users
 
@@ -34,7 +42,6 @@ class UsersFragment : CommonFragment<UsersPI>(),
         getP().setup(this)
 
         initFindUser()
-
     }
 
     private fun initFindUser() {
@@ -45,14 +52,19 @@ class UsersFragment : CommonFragment<UsersPI>(),
                 if (it.text().isEmpty()) getP().resetSearchUser()
                 it.text().toString()
             }
-            .distinct()
             .subscribe({
                 userPattern = it
                 getP().toSearchUser()
             }, { it.printStackTrace() })
             .addToUnsubscribe()
 
-        etUserName.onRightDrawableClicked { it.text.clear() }
+        etUserName.onRightDrawableClicked { toClearSearch() }
+        etUserName.text.clear()
+    }
+
+    private fun toClearSearch(){
+        etUserName.text.clear()
+        getP().resetSearchUser()
     }
 
     override fun updateUserList(users: List<User>) {
@@ -61,13 +73,20 @@ class UsersFragment : CommonFragment<UsersPI>(),
         }
         context?.let { context ->
             rvList.layoutManager = LinearLayoutManager(context)
-            rvList.adapter = UserAdapter(context, ArrayList(users))
+            rvList.adapter = UserAdapter(context, ArrayList(users)){
+                currentUser = it
+                getP().showUser()
+            }
         }
     }
 
     override fun onRefresh() {
         swContainer.isRefreshing = false
         getP().toUpdateUsers()
+    }
+
+    override fun showUser(user:User){
+        getAppActivity().addFragment(UserFragment.newInstance(user))
     }
 
 }

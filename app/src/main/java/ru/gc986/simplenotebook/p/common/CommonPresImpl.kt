@@ -10,12 +10,16 @@ abstract class CommonPresImpl<T : CommonView> : CommonPres<T> {
     private lateinit var view: T
     private val unsubscribe = CompositeDisposable()
     @Inject lateinit var dataCenter: DataCenterI
+    private var firstLaunch = true
 
     abstract fun init()
 
     protected fun getV() = view
 
     override fun setup(view: T) {
+        if (!firstLaunch) return
+        firstLaunch = true
+
         this.view = view
         init()
     }

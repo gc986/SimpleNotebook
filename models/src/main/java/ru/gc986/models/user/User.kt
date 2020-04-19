@@ -4,6 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import ru.gc986.models.user.EducationPeriod
+import java.io.Serializable
 
 @Entity
 data class User(
@@ -14,4 +15,4 @@ data class User(
     val name: String,
     val phone: String,
     val temperament: String
-)
+) : Serializable

@@ -18,7 +18,9 @@
         <item name="android:paddingRight">@dimen/dimen_common_padding</item>
         <item name="android:drawablePadding">@dimen/_11sdp</item>
         <item name="android:hint">@android:string/search_go</item>
+        <item name="android:singleLine">true</item>
         <item name="android:textSize">@dimen/dimen_edit_text_size</item>
+        <item name="android:imeOptions">actionDone</item>
     </style>
 
 

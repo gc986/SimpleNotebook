@@ -7,5 +7,7 @@
     <dimen name="dimen_height_toolbar">@dimen/_52sdp</dimen>
     <dimen name="dimen_edit_text_size">@dimen/_13ssp</dimen>
     <dimen name="dimen_user_adapter_pading">@dimen/_12sdp</dimen>
+    <dimen name="dimen_user_info_padding">@dimen/_14sdp</dimen>
+    <dimen name="dimen_user_addition_info_text_size">@dimen/_12ssp</dimen>
 
 </resources>

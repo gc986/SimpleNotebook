@@ -1,5 +1,6 @@
 package ru.gc986.simplenotebook.v
 
+import androidx.fragment.app.Fragment
 import ru.gc986.simplenotebook.R
 import ru.gc986.simplenotebook.SimpleNotebookApp.Companion.diPres
 import ru.gc986.simplenotebook.p.app.AppPI
@@ -12,10 +13,7 @@ class AppActivity : CommonActivity<AppPI>(),
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun initView() {
-        supportFragmentManager
-            .beginTransaction()
-            .add( R.id.root,UsersFragment())
-            .commit()
+        addFragment(UsersFragment.newInstance())
     }
 
     override fun init() {

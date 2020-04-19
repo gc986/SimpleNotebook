@@ -26,16 +26,9 @@ class DataCenter(private val context: Context): DataCenterI {
             mainServer
         mainServerUrl = fullMainServerUrl
         requests?.setMainServer(fullMainServerUrl)
-
-        getSharedPref().putSPString(Consts.SERVERADDRESS, fullMainServerUrl).subscribe {}
     }
 
-    private fun getMainServerUrl(): String = mainServerUrl?.let { it } ?: let {
-        var url = ""
-        getSharedPref().getSPString(Consts.SERVERADDRESS).subscribe { url = it }
-        mainServerUrl = url
-        return url
-    }
+    private fun getMainServerUrl(): String = mainServerUrl?:""
 
     private fun getRequests(): RequestsImpl = requests ?: let {
         val newRequests = RequestsImpl(context, SimpleNotebookApp.showDebugInfo)

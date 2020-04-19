@@ -6,7 +6,7 @@
     
     <color name="colorText">#e5000000</color>
     <color name="colorTextGray">#8a000000</color>
-    <color name="colorTextClick">#269df7</color>
+    <color name="colorTextLink">#269df7</color>
     <color name="colorStroke">#DEDEDE</color>
 
 </resources>

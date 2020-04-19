@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".v.UserFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_height_toolbar"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_user_info_padding"
+        android:layout_marginTop="@dimen/dimen_user_info_padding"
+        android:layout_marginRight="@dimen/dimen_user_info_padding"
+        android:text="Name"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/_20sdp" />
+
+    <TextView
+        android:id="@+id/tvPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_user_info_padding"
+        android:layout_marginTop="@dimen/dimen_user_info_padding"
+        android:layout_marginRight="@dimen/dimen_user_info_padding"
+        android:text="phone"
+        android:textColor="@color/colorTextLink"
+        android:textSize="@dimen/dimen_user_addition_info_text_size" />
+
+    <TextView
+        android:id="@+id/tvTemperament"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_user_info_padding"
+        android:layout_marginTop="@dimen/dimen_user_info_padding"
+        android:layout_marginRight="@dimen/dimen_user_info_padding"
+        android:text="temperament"
+        android:textColor="@color/colorTextGray"
+        android:textSize="@dimen/dimen_user_addition_info_text_size" />
+
+    <TextView
+        android:id="@+id/tvEducationPeriod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_user_info_padding"
+        android:layout_marginTop="@dimen/dimen_user_info_padding"
+        android:layout_marginRight="@dimen/dimen_user_info_padding"
+        android:text="educationPeriod"
+        android:textColor="@color/colorTextGray"
+        android:textSize="@dimen/dimen_user_addition_info_text_size" />
+
+    <TextView
+        android:id="@+id/tvBiography"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_user_info_padding"
+        android:layout_marginTop="@dimen/dimen_user_info_padding"
+        android:layout_marginRight="@dimen/dimen_user_info_padding"
+        android:text="biography"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/dimen_user_addition_info_text_size" />
+</LinearLayout>

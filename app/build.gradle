@@ -62,7 +62,7 @@ dependencies {
     kapt 'com.jakewharton:butterknife-compiler:10.2.0'
 
     // cicerone
-    implementation 'ru.terrakok.cicerone:cicerone:5.1.0'
+//    implementation 'ru.terrakok.cicerone:cicerone:5.1.0'
 
     // Scalable dp
     implementation 'com.intuit.ssp:ssp-android:1.0.6'

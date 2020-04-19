@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="dimen_common_padding">10dp</dimen>
+
+    <dimen name="dimen_height_edittext">50dp</dimen>
+    <dimen name="dimen_edit_text_size">24sp</dimen>
+
+</resources>

@@ -57,6 +57,7 @@ abstract class CommonActivity<T : CommonPres<*>> : AppCompatActivity(), CommonAc
         supportFragmentManager
             .beginTransaction()
             .addToBackStack(fragment.toString())
+            .setCustomAnimations(R.animator.slide_to_left, R.animator.slide_to_right, R.animator.slide_to_left, R.animator.slide_to_right)
             .add(R.id.root, fragment)
             .commit()
     }

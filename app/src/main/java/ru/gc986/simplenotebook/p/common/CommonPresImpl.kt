@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 abstract class CommonPresImpl<T : CommonView> : CommonPres<T> {
 
-    private var view: T? = null
+    private lateinit var view: T
     private val unsubscribe = CompositeDisposable()
     @Inject lateinit var dataCenter: DataCenterI
 
@@ -35,5 +35,7 @@ abstract class CommonPresImpl<T : CommonView> : CommonPres<T> {
     protected fun getNet() = dataCenter.getNetProvider()
 
     protected fun getSP() = dataCenter.getSharedPref()
+
+    protected fun getDB() = dataCenter.getDB()
 
 }

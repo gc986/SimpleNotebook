@@ -1,7 +1,7 @@
 package ru.gc986.simplenotebook.di.p
 
 import dagger.Component
-import ru.gc986.simplenotebook.p.main.MainP
+import ru.gc986.simplenotebook.p.app.AppP
 import ru.gc986.simplenotebook.p.users.UsersP
 import javax.inject.Singleton
 
@@ -9,7 +9,7 @@ import javax.inject.Singleton
 @Component(modules = [DIDataModule::class])
 interface DIData {
 
-    fun inject(pres: MainP)
+    fun inject(pres: AppP)
     fun inject(pres: UsersP)
 
 }

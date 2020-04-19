@@ -3,6 +3,8 @@ package ru.gc986.simplenotebook.m
 import android.content.Context
 import ru.base.dataprovider.sharPref.SharedPreferencesHelper
 import ru.base.dataprovider.sharPref.SharedPreferencesHelperImpl
+import ru.gc986.dataproviders.db.DB
+import ru.gc986.dataproviders.db.DBI
 import ru.gc986.dataproviders.net.RequestsI
 import ru.gc986.dataproviders.net.RequestsImpl
 import ru.gc986.models.Consts
@@ -13,6 +15,7 @@ class DataCenter(private val context: Context): DataCenterI {
     private var requests: RequestsImpl? = null
     private var mainServerUrl: String? = null
     private val sharedPref: SharedPreferencesHelper = SharedPreferencesHelperImpl(context)
+    private val db: DBI = DB(context)
 
     override fun setMainServerUrl(mainServer: String) {
         if (mainServer.isEmpty())
@@ -44,5 +47,7 @@ class DataCenter(private val context: Context): DataCenterI {
     override fun getNetProvider(): RequestsI = getRequests()
 
     override fun getSharedPref(): SharedPreferencesHelper = sharedPref
+
+    override fun getDB(): DBI = db
 
 }

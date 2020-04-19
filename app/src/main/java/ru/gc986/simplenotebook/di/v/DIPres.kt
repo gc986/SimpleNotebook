@@ -1,7 +1,7 @@
 package ru.gc986.simplenotebook.di.v
 
 import dagger.Component
-import ru.gc986.simplenotebook.v.MainActivity
+import ru.gc986.simplenotebook.v.AppActivity
 import ru.gc986.simplenotebook.v.UsersFragment
 import javax.inject.Singleton
 
@@ -9,7 +9,7 @@ import javax.inject.Singleton
 @Component(modules = [DIPresModule::class])
 interface DIPres {
 
-    fun inject(activity: MainActivity)
+    fun inject(activity: AppActivity)
     fun inject(fragment: UsersFragment)
 
 }

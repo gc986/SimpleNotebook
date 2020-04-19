@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="EditTextSearchTheme" parent="Widget.AppCompat.SearchView">
+    <style name="EditTextSearchTheme" parent="Widget.AppCompat.EditText">
         <item name="android:background">@drawable/shape_edit_text</item>
         <item name="android:drawableLeft">@android:drawable/ic_menu_search</item>
         <item name="android:drawableRight">@android:drawable/ic_menu_close_clear_cancel</item>
@@ -16,7 +16,7 @@
         <item name="android:layout_height">@dimen/dimen_height_edittext</item>
         <item name="android:paddingLeft">@dimen/dimen_common_padding</item>
         <item name="android:paddingRight">@dimen/dimen_common_padding</item>
-        <item name="android:drawablePadding">20dp</item>
+        <item name="android:drawablePadding">@dimen/_11sdp</item>
         <item name="android:hint">@android:string/search_go</item>
         <item name="android:textSize">@dimen/dimen_edit_text_size</item>
     </style>

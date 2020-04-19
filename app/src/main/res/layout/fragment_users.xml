@@ -3,38 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".v.UsersFragment"
     android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/outlinedTextField"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:startIconDrawable="@android:drawable/ic_menu_search"
-        app:endIconMode="clear_text"
-        app:endIconDrawable="@android:drawable/ic_menu_close_clear_cancel">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@android:string/search_go" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
-
-        <EditText
-            android:id="@+id/etUserName"
-            style="@style/EditTextSearchTheme"
-            android:layout_width="match_parent"
-            android:layout_margin="10dp" />
-    </FrameLayout>
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/toolbar_users"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swContainer"

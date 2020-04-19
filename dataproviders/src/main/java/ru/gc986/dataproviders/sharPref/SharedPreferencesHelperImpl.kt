@@ -3,6 +3,7 @@ package ru.base.dataprovider.sharPref
 import android.content.Context
 import android.content.SharedPreferences
 import io.reactivex.Observable
+import ru.gc986.models.Consts.Companion.DEFAULT_INT_SP
 
 class SharedPreferencesHelperImpl(context: Context) : SharedPreferencesHelper {
 
@@ -14,10 +15,8 @@ class SharedPreferencesHelperImpl(context: Context) : SharedPreferencesHelper {
         this.context = context
     }
 
-    //body
     override fun putSPString(name: String, value: String): Observable<String> {
         return Observable.create {
-            //            val mSettings: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = mSettings.edit()
             editor.putString(name, value)
             editor.apply()
@@ -28,7 +27,6 @@ class SharedPreferencesHelperImpl(context: Context) : SharedPreferencesHelper {
 
     override fun putSPInt(name: String, value: Int): Observable<Int> {
         return Observable.create {
-            //            val mSettings: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = mSettings.edit()
             editor.putInt(name, value)
             editor.apply()
@@ -40,7 +38,6 @@ class SharedPreferencesHelperImpl(context: Context) : SharedPreferencesHelper {
 
     override fun putSPLong(name: String, value: Long): Observable<Long> {
         return Observable.create {
-            //            val mSettings: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = mSettings.edit()
             editor.putLong(name, value)
             editor.apply()
@@ -52,7 +49,6 @@ class SharedPreferencesHelperImpl(context: Context) : SharedPreferencesHelper {
 
     override fun putSPBoolean(name: String, value: Boolean): Observable<Boolean> {
         return Observable.create {
-            //            val mSettings: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             val editor: SharedPreferences.Editor = mSettings.edit()
             editor.putBoolean(name, value)
             editor.apply()
@@ -64,7 +60,6 @@ class SharedPreferencesHelperImpl(context: Context) : SharedPreferencesHelper {
 
     override fun getSPString(name: String): Observable<String> {
         return Observable.create {
-            //            val mSettings: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             it.onNext(mSettings.getString(name, "")?:"")
             it.onComplete()
         }
@@ -72,8 +67,7 @@ class SharedPreferencesHelperImpl(context: Context) : SharedPreferencesHelper {
 
     override fun getSPInt(name: String): Observable<Int> {
         return Observable.create {
-            //            val mSettings: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
-            it.onNext(mSettings.getInt(name, 0))
+            it.onNext(mSettings.getInt(name, DEFAULT_INT_SP))
             it.onComplete()
         }
     }
@@ -85,7 +79,6 @@ class SharedPreferencesHelperImpl(context: Context) : SharedPreferencesHelper {
 
     override fun getSPLong(name: String): Observable<Long> {
         return Observable.create {
-            //            val mSettings: SharedPreferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
             it.onNext(mSettings.getLong(name, 0))
             it.onComplete()
         }

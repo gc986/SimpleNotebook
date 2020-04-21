@@ -14,5 +14,6 @@ class RequestsImpl(context: Context, showDebugInfo: Boolean) : BaseRequest(conte
         bnc.getUserList(url)
             .subscribeOn(Schedulers.newThread())
             .observeOn(AndroidSchedulers.mainThread())
+            .toObservable()
 
 }
